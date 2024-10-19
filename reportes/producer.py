@@ -30,16 +30,17 @@ def run_producer():
    print('> Sending measurements. To exit press CTRL+C')
 
    while True:
-    pagos = cronogramaPagos()
+     print('guayando')
+     pagos = cronogramaPagos()
     
-    for p in pagos:
+     for p in pagos:
         fecha_str = p.fecha.strftime("%Y-%m-%d")
         message =  p.nombre  +"," +  p.responsableF.correo  +"," + fecha_str  +"," + p.responsableF.nombre
         channel.basic_publish(exchange=exchange, routing_key=topic, body=message) 
     
         print(f"[x] Mensaje enviado: {message}")
 
-    time.sleep(15)
+     time.sleep(15)
 
    connection.close()
 
