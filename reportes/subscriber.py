@@ -40,7 +40,7 @@ def callback(ch, method, properties, body):
     #responsable = message["responsable"]
     #fecha = message["fecha"]
     #concepto = message["mensaje"]
-    partesmensaje = body.split(',')
+    partesmensaje = body.decode('utf-8').split(',')
     concepto = partesmensaje[0]
     receptor = partesmensaje[1]
     fecha = partesmensaje[2]
