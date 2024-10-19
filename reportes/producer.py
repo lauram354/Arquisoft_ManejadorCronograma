@@ -2,7 +2,7 @@
 import time
 import pika
 from random import uniform
-
+import datetime
 import json
 from sys import path
 from os import environ
@@ -34,6 +34,7 @@ while True:
     pagos = cronogramaPagos()
     
     for p in pagos:
+        fecha_str = p.fecha.strftime("%Y-%m-%d")
         message =  p.nombre  +"," +  p.responsableF.correo  +"," + p.fecha  +"," + p.responsableF.nombre
         channel.basic_publish(exchange=exchange, routing_key=topic, body=message) 
     
