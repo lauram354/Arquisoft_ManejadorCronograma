@@ -35,10 +35,10 @@ print('> Esperando pagos. To exit press CTRL+C')
 
 def callback(ch, method, properties, body):
     message = json.loads(body.decode('utf8'))
-    receptor = message.get('correo')
-    responsable = message.get('responsable')
-    fecha = message.get('fecha')
-    concepto = message.get('mensaje')
+    receptor = message["correo"]
+    responsable = message["responsable"]
+    fecha = message["fecha"]
+    concepto = message["mensaje"]
     send_email(receptor, responsable, fecha, concepto)
     print(f"[x] Recibido {message}")
 
