@@ -44,3 +44,5 @@ def run_producer():
 
    connection.close()
 
+if __name__ == "__main__":
+    run_producer()
