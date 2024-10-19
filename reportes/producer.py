@@ -35,7 +35,7 @@ while True:
     
     for p in pagos:
         fecha_str = p.fecha.strftime("%Y-%m-%d")
-        message =  p.nombre  +"," +  p.responsableF.correo  +"," + p.fecha  +"," + p.responsableF.nombre
+        message =  p.nombre  +"," +  p.responsableF.correo  +"," + fecha_str  +"," + p.responsableF.nombre
         channel.basic_publish(exchange=exchange, routing_key=topic, body=message) 
     
         print(f"[x] Mensaje enviado: {message}")
