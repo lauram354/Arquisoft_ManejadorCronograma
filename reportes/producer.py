@@ -1,36 +1,34 @@
 #!/usr/bin/env python
 import time
 import pika
-from random import uniform
-import datetime
-import json
 from sys import path
 from os import environ
 import django
+def run_publisher():
 
-rabbit_host = '10.128.0.10'
-rabbit_user = 'losarquis_user'
-rabbit_password = '1234'
-exchange = 'cronogramas_pagos'
-topic = 'Cronograma'
+   rabbit_host = '10.128.0.10'
+   rabbit_user = 'losarquis_user'
+   rabbit_password = '1234'
+   exchange = 'cronogramas_pagos'
+   topic = 'Cronograma'
 
-path.append('reportes/settings.py')
-environ.setdefault('DJANGO_SETTINGS_MODULE', 'reportes.settings')
-django.setup()
+   path.append('reportes/settings.py')
+   environ.setdefault('DJANGO_SETTINGS_MODULE', 'reportes.settings')
+   django.setup()
 
 
 
-from reportes.logic.logic_cronogramas import cronogramaPagos
+   from reportes.logic.logic_cronogramas import cronogramaPagos
 
-connection = pika.BlockingConnection(
+   connection = pika.BlockingConnection(
         pika.ConnectionParameters(host=rabbit_host, credentials=pika.PlainCredentials(rabbit_user, rabbit_password))
     )
     
-channel = connection.channel()
-channel.exchange_declare(exchange=exchange, exchange_type='topic')
-print('> Sending measurements. To exit press CTRL+C')
+   channel = connection.channel()
+   channel.exchange_declare(exchange=exchange, exchange_type='topic')
+   print('> Sending measurements. To exit press CTRL+C')
 
-while True:
+   while True:
     pagos = cronogramaPagos()
     
     for p in pagos:
@@ -42,5 +40,5 @@ while True:
 
     time.sleep(15)
 
-connection.close()
+   connection.close()
 
