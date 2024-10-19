@@ -34,6 +34,7 @@ print('> Esperando pagos. To exit press CTRL+C')
 
 
 def callback(ch, method, properties, body):
+    print(body)
     #message = json.loads(body.decode('utf8'))
     #receptor = message["correo"]
     #responsable = message["responsable"]
