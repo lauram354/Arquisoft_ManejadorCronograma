@@ -34,12 +34,13 @@ print('> Esperando pagos. To exit press CTRL+C')
 
 
 def callback(ch, method, properties, body):
-    message = json.loads(body.decode('utf8'))
-    receptor = message["correo"]
-    responsable = message["responsable"]
-    fecha = message["fecha"]
-    concepto = message["mensaje"]
-    send_email(receptor, responsable, fecha, concepto)
+    #message = json.loads(body.decode('utf8'))
+    #receptor = message["correo"]
+    #responsable = message["responsable"]
+    #fecha = message["fecha"]
+    #concepto = message["mensaje"]
+    #send_email(receptor, responsable, fecha, concepto)
+    message = "Su pago se acerca"
     print(f"[x] Recibido {message}")
 
 channel.basic_consume(
