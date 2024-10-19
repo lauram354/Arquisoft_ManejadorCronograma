@@ -4,7 +4,8 @@ import pika
 from sys import path
 from os import environ
 import django
-def run_publisher():
+
+def run_producer():
 
    rabbit_host = '10.128.0.10'
    rabbit_user = 'losarquis_user'
