@@ -40,7 +40,12 @@ def callback(ch, method, properties, body):
     #responsable = message["responsable"]
     #fecha = message["fecha"]
     #concepto = message["mensaje"]
-    #send_email(receptor, responsable, fecha, concepto)
+    partesmensaje = body.split(",")
+    concepto = partesmensaje[0]
+    receptor = partesmensaje[1]
+    fecha = partesmensaje[2]
+    responsable = partesmensaje[3]
+    send_email(receptor, responsable, fecha, concepto)
     message = "Su pago se acerca"
     print(f"[x] Recibido {message}")
 
