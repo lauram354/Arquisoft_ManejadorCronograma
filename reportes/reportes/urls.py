@@ -22,7 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', views.home),
     path('cronograma/', views.generar_lista_correos, name='generar_lista_correos'),
-    path('', views.generar_lista_correos, name='generar_lista_correos'),
     path('health/', v.health_check, name='health')
 
 ]
