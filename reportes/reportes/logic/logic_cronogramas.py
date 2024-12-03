@@ -7,7 +7,9 @@ def traerCronograma(anio,nombre):
     return cronograma
 
 def cronogramaPagos( ):
-    hoy = timezone.now().date()
-    fecha_limite = hoy + timedelta(days=2)
-    pagos_proximos = Pago.objects.filter(fecha__range=[hoy, fecha_limite]).all()
+    #hoy = timezone.now().date()
+    #fecha_limite = hoy + timedelta(days=2)
+    #pagos_proximos = Pago.objects.filter(fecha__range=[hoy, fecha_limite]).all()
+    r = requests.get(settings.PATH_PAGOS, headers={"Accept":"application/json"})
+    pagos_proximos = r.json()
     return pagos_proximos
